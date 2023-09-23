@@ -15,7 +15,12 @@ export const metadata = {
 export default function RootLayout({ children, modal }) {
   return (
     <html lang="en">
-      <body className={cn(patrickHand.className, "min-h-screen")}>
+      <body
+        className={cn(
+          patrickHand.className,
+          "container min-h-screen mx-auto py-4"
+        )}
+      >
         {children}
         {modal}
       </body>
