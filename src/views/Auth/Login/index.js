@@ -1,5 +1,5 @@
 "use client";
 
 export default function LoginView() {
-  return <div>LoginView</div>;
+  return <div className="text-black">LoginView</div>;
 }
