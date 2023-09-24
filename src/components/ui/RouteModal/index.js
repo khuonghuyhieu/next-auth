@@ -55,14 +55,14 @@ export default function RouteModal({
         ref={wrapper}
         className={cn(
           !noPadding && "p-1.5 md:p-2.5",
-          "absolute left-1/2 top-1/2 z-[9999] grid w-full max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 gap-4 bg-foreground-2 shadow-drop duration-200 md:w-full md:max-w-[560px]",
+          "absolute left-1/2 top-1/2 z-[9999] grid w-full max-w-[calc(100%-32px)] rounded-lg -translate-x-1/2 -translate-y-1/2 gap-4 bg-black shadow-drop duration-200 md:w-full md:max-w-[560px]",
           className
         )}
       >
         {closable && (
           <div className="flex justify-end">
             <Pressable onPress={onDismiss}>
-              <div className="cursor-pointer text-black">
+              <div className="cursor-pointer text-white">
                 <IoClose size={28} />
               </div>
             </Pressable>

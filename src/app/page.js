@@ -18,7 +18,9 @@ export default function RootPage() {
           <Image src="/img01.jpg" alt="abc" width={275} height={238} />
         </div>
       </div>
-      <Button className="w-full">Order Online</Button>
+      <Link href="/home">
+        <Button className="w-full">Order Online</Button>
+      </Link>
     </div>
   );
 }
