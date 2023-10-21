@@ -28,11 +28,11 @@ export default function LoginView() {
           <form onSubmit={methods.handleSubmit()} className="space-y-4">
             <TextInput name="name" label="User Name" />
             <TextInput name="password" type="password" label="Password" />
+            <button className="bg-white w-full py-3 text-black rounded-lg text-lg">
+              Login
+            </button>
           </form>
         </FormProvider>
-        <Button className="w-full">
-          <span>Order Online</span>
-        </Button>
       </div>
     </div>
   );
