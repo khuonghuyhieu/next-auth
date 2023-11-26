@@ -1,8 +1,5 @@
-// Read a JSON Web Token from an API route
-import { getToken } from "next-auth/jwt";
-import { NextResponse } from "next/server";
+import NextAuth from "next-auth";
+import { authOptions } from "@/libs/NextAuth";
 
-export async function GET(req) {
-  const token = await getToken({ req });
-  return NextResponse.json(token);
-}
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
