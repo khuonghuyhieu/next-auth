@@ -1,6 +1,7 @@
 import { cn } from "@/utils";
 import "./globals.css";
 import { Patrick_Hand } from "next/font/google";
+import AppProviders from "./providers";
 
 const patrickHand = Patrick_Hand({
   subsets: ["latin"],
@@ -21,7 +22,7 @@ export default function RootLayout({ children, modal }) {
           "container min-h-screen mx-auto py-4"
         )}
       >
-        {children}
+        <AppProviders>{children}</AppProviders>
         {modal}
       </body>
     </html>
