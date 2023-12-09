@@ -22,7 +22,9 @@ export default function RootLayout({ children, modal }) {
           "container min-h-screen mx-auto py-4"
         )}
       >
-        <AppProviders>{children}</AppProviders>
+        <div className="max-w-[390px] m-auto">
+          <AppProviders>{children}</AppProviders>
+        </div>
         {modal}
       </body>
     </html>
