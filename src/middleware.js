@@ -2,14 +2,13 @@ import { getToken } from 'next-auth/jwt'
 import { withAuth } from 'next-auth/middleware'
 import createIntlMiddleware from 'next-intl/middleware'
 import { NextResponse } from 'next/server'
-import queryString from 'query-string'
 import Routes from './constants/Routes'
 
 const PUBLIC_FILE = /\.(.*)$/
 const locales = ['ja', 'en']
 
 const checkIsPublicPage = (pathname) => {
-  if (pathname === Routes.HOME || pathname === Routes.WK.PAYMENT) {
+  if (pathname === Routes.HOME) {
     return true
   }
   return Object.values(Routes.PUBLIC).some((route) => pathname.startsWith(route))
@@ -33,9 +32,8 @@ const authMiddleware = withAuth((req) => intlMiddleware(req), {
 })
 
 export default async function middleware(req) {
-  const webviewToken = queryString.parse(req.nextUrl.search)?.token
   const token = await getToken({ req })
-  const isAuth = !!token || !!webviewToken
+  const isAuth = !!token
   const pathName = req.nextUrl.pathname
   const isPublicPage = checkIsPublicPage(pathName)
 
