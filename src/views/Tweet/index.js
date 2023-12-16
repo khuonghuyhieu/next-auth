@@ -1,10 +1,8 @@
-"use client";
+'use client'
 
-import ShowMoreText from "@/components/ui/ShowMoreText";
-import { contentData } from "./dunmmy";
+import ShowMoreText from '@/components/ui/ShowMoreText'
+import { contentData } from './dunmmy'
 
-const TweetView = () => {
-  return <ShowMoreText text={contentData?.content} lines={5} />;
-};
+const TweetView = () => <ShowMoreText text={contentData?.content} lines={5} />
 
-export default TweetView;
+export default TweetView

@@ -1,5 +1,5 @@
-import CredentialsProvider from "next-auth/providers/credentials";
-import API from "@/constants/API";
+import CredentialsProvider from 'next-auth/providers/credentials'
+import { Routes } from '@/constants'
 
 // const login = async (email, password) => {
 //   try {
@@ -16,59 +16,59 @@ import API from "@/constants/API";
 export const authOptions = {
   providers: [
     CredentialsProvider({
-      name: "Personal",
+      name: 'Personal',
       credentials: {
         email: {
-          label: "Email Address",
-          type: "text",
-          placeholder: "john.doe@example.com",
+          label: 'Email Address',
+          type: 'text',
+          placeholder: 'john.doe@example.com',
         },
         password: {
-          label: "Password",
-          type: "password",
-          placeholder: "Your super secure password",
+          label: 'Password',
+          type: 'password',
+          placeholder: 'Your super secure password',
         },
       },
       async authorize(credentials) {
         if (!credentials) {
-          throw new Error("INTERNAL_SERVER_ERROR");
+          throw new Error('INTERNAL_SERVER_ERROR')
         }
-        const { email, password } = credentials || {};
-        const response = await login(email, password);
+        const { email, password } = credentials || {}
+        const response = await login(email, password)
 
         if (response.success) {
           const user = {
             ...response.user,
             accessToken: response.token,
-          };
-          return user;
+          }
+          return user
         }
-        throw new Error(JSON.stringify(response));
+        throw new Error(JSON.stringify(response))
       },
     }),
   ],
   callbacks: {
     async signIn(response) {
-      return response;
+      return response
     },
     jwt: async ({ token, user, account, session }) => {
       // check sns login
       if (SNS_PROVIDERS.includes(account?.provider) && account?.id_token) {
-        const res = await snsLogin(account?.provider, account?.id_token);
+        const res = await snsLogin(account?.provider, account?.id_token)
         token.user = {
           id: res?.user?.id,
           accessToken: res?.token,
           email: res?.user?.email,
           name: res?.user?.name || user?.name,
-        };
-        return token;
+        }
+        return token
       }
 
       // session updated
       if (session) {
         token.user = {
           ...token.user,
-        };
+        }
       }
 
       if (user) {
@@ -77,9 +77,9 @@ export const authOptions = {
           accessToken: user.accessToken,
           email: user?.email,
           name: user?.name,
-        };
+        }
       }
-      return token;
+      return token
     },
     session: async ({ session, token }) => {
       session.user = {
@@ -87,9 +87,9 @@ export const authOptions = {
         accessToken: token.user.accessToken,
         email: token.user.email,
         name: token.user.name,
-      };
-      return session;
+      }
+      return session
     },
   },
   pages: { signIn: Routes.AUTH.LOGIN },
-};
+}
