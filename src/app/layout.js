@@ -1,10 +1,9 @@
 import { cn } from '@/utils'
 import './globals.css'
-// eslint-disable-next-line camelcase
-import { Patrick_Hand } from 'next/font/google'
+import { Patrick_Hand as PatrickHand } from 'next/font/google'
 import AppProviders from './providers'
 
-const patrickHand = Patrick_Hand({
+const patrickHand = PatrickHand({
   subsets: ['latin'],
   weight: ['400'],
 })
