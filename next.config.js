@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const withNextIntl = require('next-intl/plugin')
 const million = require('million/compiler')
 
 const nextConfig = {
@@ -31,5 +30,3 @@ const nextConfig = {
     ],
   },
 }
-
-module.exports = withNextIntl(million.next(nextConfig, { auto: true }))

@@ -1,0 +1,42 @@
+.root {
+  @apply inline-flex cursor-pointer select-none appearance-none items-center justify-center
+    rounded-button px-6 font-medium transition-colors duration-150 ease-linear focus:outline-none;
+}
+
+.primary {
+  background: hsl(var(--bg-button-primary)) 0% 0% no-repeat padding-box;
+  border: 1px solid hsla(0, 0%, 44%, 1);
+  opacity: 1;
+  color: hsl(var(--white));
+}
+
+.secondary {
+  background: hsl(var(--bg-button-secondary)) 0% 0% no-repeat padding-box;
+  border: 1px solid hsl(var(--outline));
+  color: hsl(var(--silver));
+}
+
+.default {
+  background: transparent;
+  border: 1px solid hsl(var(--border-gray));
+  color: hsl(var(--text-muted));
+}
+
+.danger {
+  background: hsl(var(--danger)) 0% 0% no-repeat padding-box;
+  border: 1px solid hsla(0, 0%, 44%, 1);
+  color: hsl(var(--white));
+}
+
+.root:disabled {
+  @apply pointer-events-none cursor-not-allowed select-none shadow-none;
+  color: hsl(var(--outline));
+  border: 1px solid hsl(var(--outline));
+  background: hsl(var(--bg-button-off));
+}
+
+.root:hover:not(:focus) {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid hsl(var(--outline));
+  color: #1c1c1c;
+}
