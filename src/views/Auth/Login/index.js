@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Image from 'next/image'
 import { FormProvider, useForm } from 'react-hook-form'
 import { TextInput } from '@/components/form'
-import { Button } from '@/components/ui/Button'
+import Button from '@/components/ui/Button'
 import { loginFormSchema } from '@/validations/loginSchema'
 
 export default function LoginView() {
@@ -21,10 +21,14 @@ export default function LoginView() {
       <p className="text-center text-2xl">Sign in or continue as a guest to place your order</p>
       <div>
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit()} className="space-y-4">
+          <form onSubmit={methods.handleSubmit()}>
             <TextInput name="name" label="User Name" />
             <TextInput name="password" type="password" label="Password" />
-            {/* <button className="w-full rounded-lg bg-white py-3 text-lg text-black">Login</button> */}
+            <div className="mt-10 flex w-full justify-center">
+              <Button fullWidth variant="secondary">
+                Login
+              </Button>
+            </div>
           </form>
         </FormProvider>
       </div>

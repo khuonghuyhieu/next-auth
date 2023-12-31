@@ -78,7 +78,7 @@ const Button = forwardRef((props, ref) => {
     return (
       <Button onPress={noop} {...props} href={false} className={cn('relative', className)}>
         <Link
-          className={cn('flex-center rounded-button absolute inset-0', props.linkCln)}
+          className={cn('flex-center absolute inset-0 rounded-button', props.linkCln)}
           href={href}
           target={target ?? '_self'}
           {...(props.linkProps || {})}
@@ -116,6 +116,6 @@ const Button = forwardRef((props, ref) => {
   )
 })
 
-Button.displayName = 'Matsurika_Button'
+Button.displayName = 'MyBase_Button'
 
 export default Button

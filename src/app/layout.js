@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children, modal }) {
   return (
     <html lang="en">
-      <body className={cn(patrickHand.className, 'container mx-auto min-h-screen py-4')}>
+      <body className={cn(patrickHand.className, 'container mx-auto min-h-screen antialiased')}>
         <div className="m-auto max-w-[375px]">
           <AppProviders>{children}</AppProviders>
         </div>

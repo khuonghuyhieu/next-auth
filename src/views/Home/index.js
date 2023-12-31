@@ -1,13 +1,14 @@
 'use client'
 
-import Link from 'next/link'
+import Button from '@/components/ui/Button'
+import { Routes } from '@/constants'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="rounded-lg bg-black px-5 py-3 text-lg text-white">
-        <Link href="/login">Login</Link>
-      </div>
+    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <Button className="w-20" href={Routes.AUTH.LOGIN}>
+        Login
+      </Button>
     </div>
   )
 }
