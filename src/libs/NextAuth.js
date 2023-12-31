@@ -1,22 +1,23 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { Routes } from '@/constants'
+import { Axios } from '@/configs'
+import { API, Routes } from '@/constants'
 
-// const login = async (email, password) => {
-//   try {
-//     const response = await Fetcher.post(API.AUTH.LOGIN, {
-//       email,
-//       password,
-//     });
-//     return response;
-//   } catch (error) {
-//     return error;
-//   }
-// };
+const login = async (email, password) => {
+  try {
+    const response = await Axios.post(API.AUTH.LOGIN, {
+      email,
+      password,
+    })
+    return response
+  } catch (error) {
+    return error
+  }
+}
 
 export const authOptions = {
   providers: [
     CredentialsProvider({
-      name: 'Personal',
+      name: 'TestAuth',
       credentials: {
         email: {
           label: 'Email Address',
@@ -51,19 +52,7 @@ export const authOptions = {
     async signIn(response) {
       return response
     },
-    jwt: async ({ token, user, account, session }) => {
-      // check sns login
-      if (SNS_PROVIDERS.includes(account?.provider) && account?.id_token) {
-        const res = await snsLogin(account?.provider, account?.id_token)
-        token.user = {
-          id: res?.user?.id,
-          accessToken: res?.token,
-          email: res?.user?.email,
-          name: res?.user?.name || user?.name,
-        }
-        return token
-      }
-
+    jwt: async ({ token, user, session }) => {
       // session updated
       if (session) {
         token.user = {
