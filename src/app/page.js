@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
-import { Button } from '@/components/ui/Button'
+import Button from '@/components/ui/Button'
+import { Routes } from '@/constants'
 
 export default function RootPage() {
   return (
@@ -18,9 +18,9 @@ export default function RootPage() {
           <Image src="/img01.jpg" alt="abc" width={275} height={238} />
         </div>
       </div>
-      <Link href="/home">
-        <Button className="w-full">Order Online</Button>
-      </Link>
+      <Button href={Routes.HOME} className="w-full">
+        Order Online
+      </Button>
     </div>
   )
 }

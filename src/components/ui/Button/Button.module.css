@@ -4,39 +4,39 @@
 }
 
 .primary {
-  background: hsl(var(--bg-button-primary)) 0% 0% no-repeat padding-box;
-  border: 1px solid hsla(0, 0%, 44%, 1);
+  background: black;
+  border: 1px solid white;
   opacity: 1;
-  color: hsl(var(--white));
+  color: white;
 }
 
 .secondary {
-  background: hsl(var(--bg-button-secondary)) 0% 0% no-repeat padding-box;
-  border: 1px solid hsl(var(--outline));
-  color: hsl(var(--silver));
+  background: white;
+  border: black;
+  color: black;
 }
 
 .default {
   background: transparent;
-  border: 1px solid hsl(var(--border-gray));
-  color: hsl(var(--text-muted));
+  border: gray;
+  color: gray;
 }
 
 .danger {
-  background: hsl(var(--danger)) 0% 0% no-repeat padding-box;
-  border: 1px solid hsla(0, 0%, 44%, 1);
-  color: hsl(var(--white));
+  background: red;
+  border: gray;
+  color: white;
 }
 
 .root:disabled {
   @apply pointer-events-none cursor-not-allowed select-none shadow-none;
-  color: hsl(var(--outline));
-  border: 1px solid hsl(var(--outline));
-  background: hsl(var(--bg-button-off));
+  color: white;
+  border: white;
+  background: gray;
 }
 
 .root:hover:not(:focus) {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid hsl(var(--outline));
-  color: #1c1c1c;
+  background: gray 0% 0% no-repeat padding-box;
+  border: black;
+  color: black;
 }
