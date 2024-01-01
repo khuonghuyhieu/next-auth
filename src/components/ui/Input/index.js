@@ -20,10 +20,10 @@ const Input = forwardRef((props, ref) => {
   const rootClassnames = useMemo(
     () =>
       cn(
-        'enabled:hover:border-primary border-dark text-secondary block h-12 w-full rounded-lg border px-4 text-base font-bold outline-none',
+        'enabled:hover:border-primary block h-12 w-full rounded-lg border border-black px-4 text-base font-bold text-black outline-none',
         'disabled:bg-table-header disabled:text-white disabled:shadow-none',
         {
-          'invalid:text-red-300 focus:border-red enabled:hover:border-red': Boolean(error),
+          'invalid:text-red-500 focus:border-red-500 enabled:hover:border-red-500': Boolean(error),
           peer: Boolean(error),
         }
       ),
