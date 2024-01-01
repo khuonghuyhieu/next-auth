@@ -77,7 +77,7 @@ const FormItem = ({
               {!hideErrorMessage && (
                 <p
                   className={cn(
-                    'text-danger text-[11px]',
+                    'text-[11px] text-red-500',
                     !errorMessage ? 'max-h-0' : 'mt-1 max-h-[40px]'
                   )}
                   role="alert"
