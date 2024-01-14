@@ -6,6 +6,6 @@ export default {
   API_ROOT,
   TIMEOUT,
   AUTH: {
-    LOGIN: '/login',
+    LOGIN: 'auth/login',
   },
 }

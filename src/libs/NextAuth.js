@@ -1,13 +1,33 @@
+import axios from 'axios'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { Axios } from '@/configs'
-import { API, Routes } from '@/constants'
+import { API, API_ROOT, Routes } from '@/constants'
 
-const login = async (email, password) => {
+// const login = async (email, password) => {
+//   try {
+//     const response = await Axios.post(API.AUTH.LOGIN, {
+//       email,
+//       password,
+//     })
+//     return response
+//   } catch (error) {
+//     return error
+//   }
+// }
+
+const login = async (username, password) => {
   try {
-    const response = await Axios.post(API.AUTH.LOGIN, {
-      email,
-      password,
-    })
+    const response = await axios.post(
+      `${API_ROOT}${API.AUTH.LOGIN}`,
+      {
+        username,
+        password,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
     return response
   } catch (error) {
     return error
@@ -15,11 +35,14 @@ const login = async (email, password) => {
 }
 
 export const authOptions = {
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     CredentialsProvider({
-      name: 'TestAuth',
+      name: 'HieuKhuong',
       credentials: {
-        email: {
+        username: {
           label: 'Email Address',
           type: 'text',
           placeholder: 'john.doe@example.com',
@@ -34,17 +57,13 @@ export const authOptions = {
         if (!credentials) {
           throw new Error('INTERNAL_SERVER_ERROR')
         }
-        const { email, password } = credentials || {}
-        const response = await login(email, password)
+        const { username, password } = credentials || {}
+        const response = await login(username, password)
 
-        if (response.success) {
-          const user = {
-            ...response.user,
-            accessToken: response.token,
-          }
-          return user
+        if (response.ok) {
+          return response
         }
-        throw new Error(JSON.stringify(response))
+        throw new Error(JSON.stringify(response.error))
       },
     }),
   ],
@@ -81,4 +100,5 @@ export const authOptions = {
     },
   },
   pages: { signIn: Routes.AUTH.LOGIN },
+  secret: process.env.JWT_SECRET,
 }
