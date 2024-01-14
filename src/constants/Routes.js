@@ -1,5 +1,6 @@
 export default {
-  HOME: '/',
+  LP: '/',
+  HOME: '/home',
   AUTH: {
     HOME: '/app',
     REGISTER: '/register',

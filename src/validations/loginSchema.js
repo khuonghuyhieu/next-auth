@@ -4,25 +4,22 @@ import * as Yup from 'yup'
 import { MIN_LEN_PASSWORD } from '@/constants'
 
 const FORM_LOGIN = {
-  EMAIL: 'email',
+  USER_NAME: 'username',
   PASSWORD: 'password',
 }
 
 const loginValues = {
-  [FORM_LOGIN.EMAIL]: '',
+  [FORM_LOGIN.USER_NAME]: '',
   [FORM_LOGIN.PASSWORD]: '',
 }
 
-const loginFormSchema = (t) =>
+const loginFormSchema = () =>
   Yup.object().shape({
-    [FORM_LOGIN.EMAIL]: Yup.string()
-      .trim()
-      .required(t('validate.please_enter'))
-      .email(t('validate.email_invalid')),
+    [FORM_LOGIN.USER_NAME]: Yup.string().trim().required('Please enter'),
     [FORM_LOGIN.PASSWORD]: Yup.string()
       .trim()
-      .required(t('validate.please_enter'))
-      .min(MIN_LEN_PASSWORD, t('validate.min_password', { min: MIN_LEN_PASSWORD })),
+      .required('Please enter')
+      .min(MIN_LEN_PASSWORD, 'Min password is 8'),
   })
 
 export { loginFormSchema, loginValues, FORM_LOGIN }
