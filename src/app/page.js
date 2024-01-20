@@ -19,7 +19,7 @@ export default function RootPage() {
         </div>
       </div>
       <Button href={Routes.HOME} className="w-full">
-        Order Online
+        Home Page
       </Button>
     </div>
   )
